@@ -1,0 +1,16 @@
+{
+  "name": "notion-calendar-bot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "deploy:create": "zip -r function.zip . && aws lambda create-function --function-name schedule-bot --zip-file fileb://function.zip --region ap-northeast-2 --handler index.handler --runtime nodejs20.x --role arn:aws:iam::xxxxxxxxxxxx:role/xxxx",
+    "deploy:test": "zip -r function.zip . && aws lambda update-function-code --function-name schedule-bot --zip-file fileb://function.zip --region ap-northeast-2"
+  },
+  "dependencies": {
+    "@notionhq/client": "^3.0.1",
+    "@slack/webhook": "^7.0.5",
+    "dotenv": "^16.5.0",
+    "moment-timezone": "^0.5.48"
+  }
+}
